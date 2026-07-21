@@ -38,15 +38,15 @@ async def download_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     os.makedirs('downloads', exist_ok=True)
 
-   app = (
-    Application.builder()
-    .token(TOKEN)
-    .read_timeout(120)
-    .write_timeout(120)
-    .connect_timeout(60)
-    .pool_timeout(60)
-    .build()
-)
+    app = (
+        Application.builder()
+        .token(TOKEN)
+        .read_timeout(120)
+        .write_timeout(120)
+        .connect_timeout(60)
+        .pool_timeout(60)
+        .build()
+    )
 
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, download_video))
